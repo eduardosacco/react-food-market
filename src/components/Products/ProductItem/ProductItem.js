@@ -1,4 +1,5 @@
 import classes from './ProductItem.module.css';
+import ProductItemForm from './ProductItemForm';
 
 function ProductItem(props) {
     const price =  `$${props.price.toFixed(2)}`;
@@ -12,6 +13,9 @@ function ProductItem(props) {
                 </div>
                 <div className={classes.price}>
                     {price}
+                </div>
+                <div>
+                    <ProductItemForm id={props.id}/>
                 </div>
             </div>
         </li>

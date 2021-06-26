@@ -1,16 +1,16 @@
 import classes from './AvailableProducts.module.css';
-import ProductItem from './ProductItem';
+import ProductItem from './ProductItem/ProductItem';
 import Card from '../UI/Card';
 
 function AvailableProducts() {
     const productsList = DUMMY_PRODUCTS.map(product => 
-        <li>
-            <ProductItem key={product.id}
-                name={product.name}
-                description={product.description}
-                price={product.price}
-            />
-        </li>);
+        <ProductItem key={product.id}
+            id={product.id}
+            name={product.name}
+            description={product.description}
+            price={product.price}
+        />
+    );
 
     return (
         <section className={classes.products}>
@@ -24,26 +24,26 @@ function AvailableProducts() {
 const DUMMY_PRODUCTS = [
     {
         id: '1',
-        name: 'Sushi',
-        description: 'Finest fish and veggies',
+        name: 'Beef Jerky',
+        description: 'Finest meat spiced and desiccated.',
         price: 22.99,
     },
     {
         id: '2',
-        name: 'Schnitzel',
-        description: 'A german specialty!',
+        name: 'Dried Tomatos',
+        description: 'Organic and sun dried!',
         price: 16.5,
     },
     {
         id: '3',
-        name: 'Barbecue Burger',
-        description: 'American, raw, meaty',
+        name: 'Barbecue Sauce',
+        description: 'Hikory Smoke',
         price: 12.99,
     },
     {
         id: '4',
-        name: 'Green Bowl',
-        description: 'Healthy...and green...',
+        name: 'Sriracha Sauce',
+        description: 'Spicy chillies and garlic.',
         price: 18.99,
     },
 ];
