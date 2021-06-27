@@ -21,7 +21,7 @@ function Cart(props) {
             name={item.name}
             price={item.price}
             amount={item.amount}
-            onAdd={cartItemAddHandler.bind(null, item)}
+            onAdd={cartItemAddHandler.bind(null, {...item, amount: 1})}
             onRemove={cartItemRemoveHandler.bind(null, item.id)}
         />
     );
