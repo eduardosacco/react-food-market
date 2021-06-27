@@ -4,4 +4,9 @@
     --color-3: #E9C46A;
     --color-4: #F4A261;
     --color-5: #E76F51;
+    --color-background: whitesmoke;
  }
+
+body {
+    background-color: var(--color-background);
+}
