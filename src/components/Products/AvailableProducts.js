@@ -1,9 +1,35 @@
+import { useEffect, useState } from 'react';
 import classes from './AvailableProducts.module.css';
 import ProductItem from './ProductItem/ProductItem';
 import Card from '../UI/Card';
 
 function AvailableProducts() {
-    const productsList = DUMMY_PRODUCTS.map(product => 
+    const [products, setProducts] = useState([]);  
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const response = await fetch('https://pantuflas-nastita-default-rtdb.firebaseio.com/products.json');
+            const responseData = await response.json();
+
+            //firebase specific
+            const loadedProducts = [];
+            for (const key in responseData) {
+                loadedProducts.push({
+                    id: key,
+                    name: responseData[key].name,
+                    description: responseData[key].description,
+                    price: responseData[key].price,
+                });
+            }
+
+            setProducts(loadedProducts);
+        };
+
+        fetchProducts();
+
+    }, []);
+
+    const productsList = products.map(product => 
         <ProductItem key={product.id}
             id={product.id}
             name={product.name}
@@ -20,32 +46,5 @@ function AvailableProducts() {
         </section>
     );
 }
-
-const DUMMY_PRODUCTS = [
-    {
-        id: '1',
-        name: 'Beef Jerky',
-        description: 'Finest meat spiced and desiccated.',
-        price: 22.99,
-    },
-    {
-        id: '2',
-        name: 'Dried Tomatos',
-        description: 'Organic and sun dried!',
-        price: 16.5,
-    },
-    {
-        id: '3',
-        name: 'Barbecue Sauce',
-        description: 'Hikory Smoke',
-        price: 12.99,
-    },
-    {
-        id: '4',
-        name: 'Sriracha Sauce',
-        description: 'Spicy chillies and garlic.',
-        price: 18.99,
-    },
-];
 
 export default AvailableProducts;
