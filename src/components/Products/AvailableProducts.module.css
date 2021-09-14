@@ -12,6 +12,16 @@
     padding: 0;
 }
 
+.productsLoading {
+    text-align: center;
+    color: black;
+}
+
+.productsLoadingError {
+    text-align: center;
+    color: red;
+}
+
 @keyframes products-appear {
     from {
         opacity: 0;
