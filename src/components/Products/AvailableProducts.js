@@ -32,10 +32,11 @@ function AvailableProducts() {
             setProducts(loadedProducts);  
         };
 
-        fetchProducts().catch(error => {
-            setIsLoading(false);
+        fetchProducts()
+        .catch(error => {
             setHttpError("There was a problem when getting the products from the server. Please try again later...");
-        });        
+        })
+        .finally(setIsLoading(false));        
     }, []);
 
     if (isLoading) {
